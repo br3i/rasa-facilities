@@ -1,0 +1,95 @@
+pip install virtualenv
+virtualenv env--rasa
+.\env--rasa\Scripts\activate     ----  ./env--rasa/Scripts/activate  -> esto mejor usando el tab porque te autocompleta el nombre de la carpeta
+pip install rasa
+rasa init
+*escribir el nombre del proyecto sino solo dar enter para crear en el mismo directorio*
+
+
+----------------------
+
+** En el visual cuando se ejecute todo, en data entramos en el archivo nlu.yml
+
+aqui podemos añadir y editar las respuestas y preguntas que va a recibir el bot
+
+
+** Ahora entramos en el archivo config.yml
+
+aqui veremos los pipeline 
+
+dentro tenemos los supervised_embeddings que lo que hace es tokenizar los input, lo que se obtiene
+se le pasa al siguiente que obtiene caracteristicas de este output y de igual forma regresa un output,
+ahora se obtiene entidades con el siguiente modelo, de esta forma se procesa todos los input
+
+**abriendo el archivo stories.yml
+
+Aqui se pueden ver los modelos con los que se entrenan la red 
+
+**Archivo domain.yml
+
+aqui se agregan los que creamos: 
+  - search_provider
+  - inform
+
+**entrar a la carpeta actions en el archivo actions.py
+
+
+
+
+
+
+
+
+*SOLUCION DE ERRORES*
+
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml
+
+
+
+
+*AL siguiente dia se abre consola y se ejecuta: .\env--rasa\Scripts\activate*
+*A veces es bueno entrenar al bot con error de sintaxis porque el usuario no siempre escribe bien*
+*En el archivo domain.yml en los slots se puede hacer este ejemplo:
+
+type: float
+    min_value: 0
+    max_value: 50
+*
+
+*en el archivo config,yml debemos descomentar lo de abajo que son las policies que basicamente regulan las historias creadas y sigue el hilo de la conversacion con el bot*
+*se le agrega al final este argumento:  data_augmentation: 50*
+*cuando se acabe vamos a consola y le vamos a entrenar
+rasa train
+*
+*poner en el cmd: rasa run actions, rasa shell --> levanta un servidor para el servicio y conversar con el bot*
+
+
+*instalar el git*
+*usar comandos: 
+
+git config --global user.name br3i
+
+git config --global user.email b.alexis98@hotmail.es
+
+*
+
+*crearse cuenta en: https://cloud.okteto.com/#/login   ---> se recimienda con el mismo github*
+
+*ahora en el cmd del proyecto vamos a escribir: 
+git init
+git status
+git add .
+git commit -m "Added files"
+git status
+git branch
+git remote add origin https://github.com/br3i/rasa-facilities.git
+git push -u origin main
+
+
+--> Esto me dice la pag de github
+echo "# rasa-facilities" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/br3i/rasa-facilit
